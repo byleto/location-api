@@ -3,7 +3,7 @@ import { RequestHandler } from "express";
 import { Locations } from "../models/locations";
 
 export const createLocation: RequestHandler = async (req, res, next) => {
-  var locations = await Locations.create({ ...req.body });
+  const locations = await Locations.create({ ...req.body });
   return res
     .status(200)
     .json({ message: "Location created successfully", data: locations });
