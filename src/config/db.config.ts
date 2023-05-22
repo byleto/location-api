@@ -1,14 +1,14 @@
-module.exports = {
-    HOST: process.env.DB_HOST,
-    USER: process.env.DB_USER,
-    PASSWORD: process.env.DB_PASSWORD,
-    DB: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-    dialect: "mysql",
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-  };
+import { Sequelize } from "sequelize-typescript";
+import { Locations } from "../models/locations";
+
+const connection = new Sequelize({
+  dialect: "mysql",
+  host: process.env.DB_HOST,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  logging: false,
+  models: [Locations],
+});
+
+export default connection;
