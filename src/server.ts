@@ -2,10 +2,13 @@ import express from 'express';
 import { json } from 'body-parser';
 import router from './routes/locations';
 import connection from './config/db.config';
+const cors = require('cors');
 
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
 
 const app = express();
+
+app.use(cors({ origin: '*' }));
 
 app.use(json());
 app.use('/api', router);
